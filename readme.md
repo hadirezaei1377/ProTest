@@ -19,3 +19,18 @@ https://ieftimov.com/posts/testing-in-go-clean-tests-using-t-cleanup/
 https://ieftimov.com/posts/testing-in-go-testing-http-servers/
 https://ieftimov.com/posts/testing-in-go-websockets/
 https://ieftimov.com/posts/testing-in-go-stop-leaking-files/
+
+
+
+see this test in golang:
+unit test
+integration test
+end to end test
+
+
+in golang it is a convention that every file which has _test.go in last part , run as a test file by compliler.
+
+another convention is When we are writting a test for a function or a class, we have to add Test prefix to it and the input must be T from type *testing.T
+
+as well we must set _test in our package name. becuase in test file we need some new functions.
+this functions are usable just for testing file.
