@@ -2,19 +2,18 @@ package user
 
 import (
 	"fmt"
-	"os/user"
 )
 
 // we have no relation with dependency behavior, but also we want to check tho log in, so we use mocking
 
 type mockRepo struct{}
 
-func (m *mockRepo) GetUserByEmail(email string) (*user.User, error) {
+func (m *mockRepo) GetUserByEmail(email string) (*model.User, error) {
 	// we set the dependency behavior as mock :
 	if email == "" {
 		return nil, fmt.Errorf("")
 	}
-	return &user.User{
+	return &model.User{
 		ID:       1,
 		Email:    "email",
 		password: "hello",
@@ -23,19 +22,12 @@ func (m *mockRepo) GetUserByEmail(email string) (*user.User, error) {
 }
 
 type Repository interface {
-	GetUserByEmail(email string) (*User, error)
+	GetUserByEmail(email string) (*model.User, error)
 	// in this mode our dependency is not gorm , but also it is an interface
 }
 
 type Service struct {
 	repo Repository
-}
-
-type User struct {
-	ID       uint
-	Email    string
-	Password string
-	Name     string
 }
 
 type LoginRequest struct {
